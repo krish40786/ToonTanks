@@ -1,0 +1,8 @@
+{
+	"SourceFiles": [
+		"C:\\Users\\krishna\\Desktop\\toon_tanks\\ToonTanksProjectSetup_4.25\\ToonTanksProjectSetup_4.25\\ToonTanks\\Source\\ToonTanks\\ToonTanks.Build.cs",
+		"C:\\Users\\krishna\\Desktop\\toon_tanks\\ToonTanksProjectSetup_4.25\\ToonTanksProjectSetup_4.25\\ToonTanks\\Source\\ToonTanks.Target.cs",
+		"C:\\Users\\krishna\\Desktop\\toon_tanks\\ToonTanksProjectSetup_4.25\\ToonTanksProjectSetup_4.25\\ToonTanks\\Source\\ToonTanksEditor.Target.cs"
+	],
+	"EngineVersion": "4.27.1"
+}
