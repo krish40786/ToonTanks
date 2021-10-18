@@ -2,6 +2,7 @@
 
 
 #include "Projectile.h"
+#include "GameFramework/ProjectileMovementComponent.h"
 
 // Sets default values
 AProjectile::AProjectile()
@@ -11,7 +12,10 @@ AProjectile::AProjectile()
 
 	Projectile = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Projectile Mesh"));
 	RootComponent = Projectile;
-
+	
+	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement"));
+	ProjectileMovement->MaxSpeed = 1300.f;
+	ProjectileMovement->InitialSpeed = 1300.f;
 }
 
 // Called when the game starts or when spawned
@@ -19,6 +23,8 @@ void AProjectile::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	//Funtion to add the function to the multicast delegate to be called when the collision event occurs
+	Projectile->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
 }
 
 // Called every frame
@@ -28,3 +34,8 @@ void AProjectile::Tick(float DeltaTime)
 
 }
 
+void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+{
+
+	UE_LOG(LogTemp, Warning, TEXT("ON HIT %s, %s, %s"), *HitComp->GetName(), *OtherActor->GetName(), *OtherComp->GetName());
+}
