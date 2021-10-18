@@ -5,3 +5,6 @@ C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Compone
 C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Classes\Components/ShapeComponent.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\ShapeComponent.generated.h
 C:\Program Files\Epic Games\UE_4.27\Engine\Intermediate\Build\Win64\UE4Editor\Inc\Engine\CapsuleComponent.generated.h
+C:\Program Files\Epic Games\UE_4.27\Engine\Source\Runtime\Engine\Public\DrawDebugHelpers.h
+C:\Users\krishna\Desktop\toon_tanks\ToonTanksProjectSetup_4.25\ToonTanksProjectSetup_4.25\ToonTanks\Source\ToonTanks\Pawns\../Projectile.h
+C:\Users\krishna\Desktop\toon_tanks\ToonTanksProjectSetup_4.25\ToonTanksProjectSetup_4.25\ToonTanks\Intermediate\Build\Win64\UE4Editor\Inc\ToonTanks\Projectile.generated.h

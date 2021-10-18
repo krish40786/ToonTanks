@@ -3,6 +3,8 @@
 
 #include "PawnBase.h"
 #include "Components/CapsuleComponent.h"
+#include "DrawDebugHelpers.h"
+#include "../Projectile.h"
 
 // Sets default values
 APawnBase::APawnBase()
@@ -24,24 +26,29 @@ APawnBase::APawnBase()
 
 }
 
-// Called when the game starts or when spawned
-void APawnBase::BeginPlay()
+
+void APawnBase::RotateTurrent(FVector LookAtTarget)
 {
-	Super::BeginPlay();
+	FVector ToTarget = LookAtTarget - TurrentMesh->GetComponentLocation();
+	FRotator LookAtRotation = FRotator(0.f, ToTarget.Rotation().Yaw, 0.f);
+	TurrentMesh->SetWorldRotation(LookAtRotation);
+}
+
+
+void APawnBase::Fire()
+{
+	FVector ProjectileSpawnPointLocation = ProjectileSpawnPoint->GetComponentLocation();
 	
+	GetWorld()->SpawnActor<AProjectile>(ProjectileClass, ProjectileSpawnPointLocation, ProjectileSpawnPoint->GetComponentRotation());
+	/*DrawDebugSphere(
+		GetWorld(),
+		ProjectileSpawnPoint->GetComponentLocation(),
+		10.f,
+		12,
+		FColor::Red,
+		true,
+		-1.f);*/
 }
 
-// Called every frame
-void APawnBase::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
 
-}
-
-// Called to bind functionality to input
-void APawnBase::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
-
-}
 

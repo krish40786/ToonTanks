@@ -20,6 +20,8 @@ void EmptyLinkFunctionForGeneratedCodePawnBase() {}
 	ENGINE_API UClass* Z_Construct_UClass_UCapsuleComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_UStaticMeshComponent_NoRegister();
 	ENGINE_API UClass* Z_Construct_UClass_USceneComponent_NoRegister();
+	COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
+	TOONTANKS_API UClass* Z_Construct_UClass_AProjectile_NoRegister();
 // End Cross Module References
 	void APawnBase::StaticRegisterNativesAPawnBase()
 	{
@@ -51,13 +53,9 @@ void EmptyLinkFunctionForGeneratedCodePawnBase() {}
 #endif
 		static const UE4CodeGen_Private::FObjectPropertyParams NewProp_ProjectileSpawnPoint;
 #if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_VisibleAnywhereint_MetaData[];
+		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_ProjectileClass_MetaData[];
 #endif
-		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_VisibleAnywhereint;
-#if WITH_METADATA
-		static const UE4CodeGen_Private::FMetaDataPairParam NewProp_EditAnywhereInt_MetaData[];
-#endif
-		static const UE4CodeGen_Private::FUnsizedIntPropertyParams NewProp_EditAnywhereInt;
+		static const UE4CodeGen_Private::FClassPropertyParams NewProp_ProjectileClass;
 		static const UE4CodeGen_Private::FPropertyParamsBase* const PropPointers[];
 		static const FCppClassTypeInfoStatic StaticCppClassTypeInfo;
 		static const UE4CodeGen_Private::FClassParams ClassParams;
@@ -75,55 +73,55 @@ void EmptyLinkFunctionForGeneratedCodePawnBase() {}
 #endif
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APawnBase_Statics::NewProp_CapsuleComp_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Pawn Components" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Pawns/PawnBase.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APawnBase_Statics::NewProp_CapsuleComp = { "CapsuleComp", nullptr, (EPropertyFlags)0x0040000000080008, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APawnBase, CapsuleComp), Z_Construct_UClass_UCapsuleComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APawnBase_Statics::NewProp_CapsuleComp_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APawnBase_Statics::NewProp_CapsuleComp_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APawnBase_Statics::NewProp_CapsuleComp = { "CapsuleComp", nullptr, (EPropertyFlags)0x00400000000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APawnBase, CapsuleComp), Z_Construct_UClass_UCapsuleComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APawnBase_Statics::NewProp_CapsuleComp_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APawnBase_Statics::NewProp_CapsuleComp_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APawnBase_Statics::NewProp_BaseMesh_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Pawn Components" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Pawns/PawnBase.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APawnBase_Statics::NewProp_BaseMesh = { "BaseMesh", nullptr, (EPropertyFlags)0x0040000000080008, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APawnBase, BaseMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APawnBase_Statics::NewProp_BaseMesh_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APawnBase_Statics::NewProp_BaseMesh_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APawnBase_Statics::NewProp_BaseMesh = { "BaseMesh", nullptr, (EPropertyFlags)0x00400000000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APawnBase, BaseMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APawnBase_Statics::NewProp_BaseMesh_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APawnBase_Statics::NewProp_BaseMesh_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APawnBase_Statics::NewProp_TurrentMesh_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Pawn Components" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Pawns/PawnBase.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APawnBase_Statics::NewProp_TurrentMesh = { "TurrentMesh", nullptr, (EPropertyFlags)0x0040000000080008, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APawnBase, TurrentMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APawnBase_Statics::NewProp_TurrentMesh_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APawnBase_Statics::NewProp_TurrentMesh_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APawnBase_Statics::NewProp_TurrentMesh = { "TurrentMesh", nullptr, (EPropertyFlags)0x00400000000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APawnBase, TurrentMesh), Z_Construct_UClass_UStaticMeshComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APawnBase_Statics::NewProp_TurrentMesh_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APawnBase_Statics::NewProp_TurrentMesh_MetaData)) };
 #if WITH_METADATA
 	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileSpawnPoint_MetaData[] = {
+		{ "AllowPrivateAccess", "true" },
+		{ "Category", "Pawn Components" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Pawns/PawnBase.h" },
 	};
 #endif
-	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileSpawnPoint = { "ProjectileSpawnPoint", nullptr, (EPropertyFlags)0x0040000000080008, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APawnBase, ProjectileSpawnPoint), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileSpawnPoint_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileSpawnPoint_MetaData)) };
+	const UE4CodeGen_Private::FObjectPropertyParams Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileSpawnPoint = { "ProjectileSpawnPoint", nullptr, (EPropertyFlags)0x00400000000a001d, UE4CodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APawnBase, ProjectileSpawnPoint), Z_Construct_UClass_USceneComponent_NoRegister, METADATA_PARAMS(Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileSpawnPoint_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileSpawnPoint_MetaData)) };
 #if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APawnBase_Statics::NewProp_VisibleAnywhereint_MetaData[] = {
-		{ "AllowPrivateAccess", "true" },
-		{ "Category", "Variables" },
+	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileClass_MetaData[] = {
+		{ "Category", "Combat" },
+		{ "Comment", "//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \"Variables\", meta = (AllowPrivateAccess = \"true\"))\n//int EditAnywhereInt = 10;\n" },
 		{ "ModuleRelativePath", "Pawns/PawnBase.h" },
+		{ "ToolTip", "UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = \"Variables\", meta = (AllowPrivateAccess = \"true\"))\nint EditAnywhereInt = 10;" },
 	};
 #endif
-	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_APawnBase_Statics::NewProp_VisibleAnywhereint = { "VisibleAnywhereint", nullptr, (EPropertyFlags)0x0040000000020005, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APawnBase, VisibleAnywhereint), METADATA_PARAMS(Z_Construct_UClass_APawnBase_Statics::NewProp_VisibleAnywhereint_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APawnBase_Statics::NewProp_VisibleAnywhereint_MetaData)) };
-#if WITH_METADATA
-	const UE4CodeGen_Private::FMetaDataPairParam Z_Construct_UClass_APawnBase_Statics::NewProp_EditAnywhereInt_MetaData[] = {
-		{ "AllowPrivateAccess", "true" },
-		{ "Category", "Variables" },
-		{ "ModuleRelativePath", "Pawns/PawnBase.h" },
-	};
-#endif
-	const UE4CodeGen_Private::FUnsizedIntPropertyParams Z_Construct_UClass_APawnBase_Statics::NewProp_EditAnywhereInt = { "EditAnywhereInt", nullptr, (EPropertyFlags)0x0040000000000015, UE4CodeGen_Private::EPropertyGenFlags::Int, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APawnBase, EditAnywhereInt), METADATA_PARAMS(Z_Construct_UClass_APawnBase_Statics::NewProp_EditAnywhereInt_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APawnBase_Statics::NewProp_EditAnywhereInt_MetaData)) };
+	const UE4CodeGen_Private::FClassPropertyParams Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileClass = { "ProjectileClass", nullptr, (EPropertyFlags)0x0044000000010001, UE4CodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, 1, STRUCT_OFFSET(APawnBase, ProjectileClass), Z_Construct_UClass_AProjectile_NoRegister, Z_Construct_UClass_UClass, METADATA_PARAMS(Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileClass_MetaData, UE_ARRAY_COUNT(Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileClass_MetaData)) };
 	const UE4CodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_APawnBase_Statics::PropPointers[] = {
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APawnBase_Statics::NewProp_CapsuleComp,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APawnBase_Statics::NewProp_BaseMesh,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APawnBase_Statics::NewProp_TurrentMesh,
 		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileSpawnPoint,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APawnBase_Statics::NewProp_VisibleAnywhereint,
-		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APawnBase_Statics::NewProp_EditAnywhereInt,
+		(const UE4CodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_APawnBase_Statics::NewProp_ProjectileClass,
 	};
 	const FCppClassTypeInfoStatic Z_Construct_UClass_APawnBase_Statics::StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<APawnBase>::IsAbstract,
@@ -152,7 +150,7 @@ void EmptyLinkFunctionForGeneratedCodePawnBase() {}
 		}
 		return OuterClass;
 	}
-	IMPLEMENT_CLASS(APawnBase, 2618278783);
+	IMPLEMENT_CLASS(APawnBase, 1479271688);
 	template<> TOONTANKS_API UClass* StaticClass<APawnBase>()
 	{
 		return APawnBase::StaticClass();
