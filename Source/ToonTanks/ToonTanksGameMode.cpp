@@ -13,6 +13,7 @@ void AToonTanksGameMode::ActorDied(AActor* DeadActor)
 	if (DeadActor == Tank)
 	{
 		Tank->HandleDestruction();
+		HandleGameOver(false);
 		if (ToonTanksPlayerController) 
 		{
 			//Disable input for the Tank 
@@ -23,12 +24,24 @@ void AToonTanksGameMode::ActorDied(AActor* DeadActor)
 	else if (ATower* DestroyedTower = Cast<ATower>(DeadActor))
 	{
 		DestroyedTower->HandleDestruction();
+		TargetTurrents -= 1;
+		if (TargetTurrents == 0)
+		{
+			HandleGameOver(true);
+		}
 	}
 }
 
 void AToonTanksGameMode::BeginPlay()
 {
 	Super::BeginPlay();
+
+	TArray<AActor*> TurrentActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ATower::StaticClass(), TurrentActors);
+
+	TargetTurrents = TurrentActors.Num();
+
+	
 	HandleGameStart();
 
 }
@@ -54,5 +67,17 @@ void AToonTanksGameMode::HandleGameStart()
 		GetWorldTimerManager().SetTimer(PlayerEnableTimerHandle, TimerDelegate, StartDelay, false);
 	}
 
+}
 
+void AToonTanksGameMode::HandleGameOver(bool PlayerWon)
+{
+	GameOver(PlayerWon);
+
+	//stop the timer for each of the turrents
+	TArray<AActor*> TurrentActors;
+	UGameplayStatics::GetAllActorsOfClass(GetWorld(), ATower::StaticClass(), TurrentActors);
+	
+	for (int i = 0; i < TurrentActors.Num(); ++i) {
+		TurrentActors[i]->GetWorldTimerManager().ClearTimer(Cast<ATower>((TurrentActors[i]))->FireRateTimerHandle);
+	}
 }

@@ -25,6 +25,11 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void StartGame();
 
+
+	UFUNCTION(BlueprintImplementableEvent)
+		void GameOver(bool PlayerWon);
+	
+
 private:
 
 	class ATank* Tank;
@@ -34,4 +39,8 @@ private:
 	float StartDelay = 3.f;
 
 	void HandleGameStart();
+
+	void HandleGameOver(bool PlayerWon);
+
+	int32 TargetTurrents = 0;
 };
