@@ -24,6 +24,8 @@ public:
 
 	void CheckFireCondition();
 
+	void HandleDestruction();
+
 protected:
 
 	virtual void BeginPlay() override;

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Sound/SoundBase.h"
 #include "Projectile.generated.h"
 
 
@@ -34,5 +35,19 @@ private:
 
 	UFUNCTION()
 	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+	
+	UPROPERTY(EditAnywhere)
+	float Damage = 50.f;
 
+	UPROPERTY(EditAnywhere, Category="Effects")
+	USoundBase* HitSound;
+
+	UPROPERTY(EditAnywhere, Category = "Effects")
+	USoundBase* LaunchSound;
+
+	UPROPERTY(EditAnywhere, Category = "Effects")
+		UParticleSystem* HitParticle;
+
+	UPROPERTY(EditAnywhere, Category = "Effects")
+		UParticleSystemComponent* ParticleTrail;
 };

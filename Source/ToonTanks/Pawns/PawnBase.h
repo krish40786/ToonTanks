@@ -34,6 +34,12 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Combat")
 	TSubclassOf<class AProjectile> ProjectileClass;
 
+	UPROPERTY(EditAnywhere, Category = "Effects")
+		USoundBase* DeathSound;
+
+	UPROPERTY(EditAnywhere, Category ="Effects")
+	UParticleSystem* DeathParticle;
+
 protected: 
 	
 	void RotateTurrent(FVector LookAtTarget);
@@ -43,5 +49,8 @@ protected:
 public:
 	// Sets default values for this pawn's properties
 	APawnBase();
+
+	//handles the destruction of the pawn 
+	void HandleDestruction();
 
 };

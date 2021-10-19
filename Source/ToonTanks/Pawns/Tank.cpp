@@ -55,7 +55,7 @@ void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 
-	PlayerControllerRef = Cast<APlayerController>(GetController());
+	TankPlayerController = Cast<APlayerController>(GetController());
 
 	
 }
@@ -66,11 +66,11 @@ void ATank::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 
-	if (PlayerControllerRef) 
+	if (TankPlayerController) 
 	{
 		FHitResult HitResult;
 
-		PlayerControllerRef->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, HitResult);
+		TankPlayerController->GetHitResultUnderCursor(ECollisionChannel::ECC_Visibility, false, HitResult);
 
 		/*DrawDebugSphere(
 			GetWorld(),
@@ -85,5 +85,16 @@ void ATank::Tick(float DeltaTime)
 
 	}
 
+}
+
+void ATank::HandleDestruction()
+{
+	Super::HandleDestruction();
+
+	//to hide the tank we do 
+	SetActorHiddenInGame(true);
+
+	//To disable ticking for the tank
+	SetActorTickEnabled(false);
 }
 

@@ -3,6 +3,9 @@
 
 #include "Projectile.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "GameFramework/DamageType.h"
+#include "Particles/ParticleSystemComponent.h"
 
 // Sets default values
 AProjectile::AProjectile()
@@ -16,6 +19,9 @@ AProjectile::AProjectile()
 	ProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement"));
 	ProjectileMovement->MaxSpeed = 1300.f;
 	ProjectileMovement->InitialSpeed = 1300.f;
+
+	ParticleTrail = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Projectile Trail"));
+	ParticleTrail->SetupAttachment(RootComponent);
 }
 
 // Called when the game starts or when spawned
@@ -23,6 +29,8 @@ void AProjectile::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	UGameplayStatics::PlaySoundAtLocation(this, LaunchSound, GetActorLocation());
+
 	//Funtion to add the function to the multicast delegate to be called when the collision event occurs
 	Projectile->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
 }
@@ -37,5 +45,18 @@ void AProjectile::Tick(float DeltaTime)
 void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
 
-	UE_LOG(LogTemp, Warning, TEXT("ON HIT %s, %s, %s"), *HitComp->GetName(), *OtherActor->GetName(), *OtherComp->GetName());
+	auto MyOwner = GetOwner();
+	if (MyOwner == nullptr) return;
+
+	auto MyOwnerInstigator = MyOwner->GetInstigatorController();
+	auto DamageTypeClass = UDamageType::StaticClass();
+
+	if (OtherActor && OtherActor != this && OtherActor != MyOwner)
+	{
+		UGameplayStatics::ApplyDamage(OtherActor, Damage, MyOwnerInstigator, this, DamageTypeClass);
+		UGameplayStatics::SpawnEmitterAtLocation(this, HitParticle, GetActorLocation());
+		UGameplayStatics::PlaySoundAtLocation(this, HitSound, GetActorLocation());
+		//Destroys the projectile upon impact
+		Destroy();
+	}
 }

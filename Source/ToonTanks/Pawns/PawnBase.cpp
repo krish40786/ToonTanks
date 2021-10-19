@@ -4,6 +4,7 @@
 #include "PawnBase.h"
 #include "Components/CapsuleComponent.h"
 #include "DrawDebugHelpers.h"
+#include "Kismet/GameplayStatics.h"
 #include "../Projectile.h"
 
 // Sets default values
@@ -26,6 +27,12 @@ APawnBase::APawnBase()
 
 }
 
+void APawnBase::HandleDestruction()
+{
+	//Visual and Sound effects
+	UGameplayStatics::SpawnEmitterAtLocation(this, DeathParticle, GetActorLocation());
+	UGameplayStatics::PlaySoundAtLocation(this, DeathSound, GetActorLocation());
+}
 
 void APawnBase::RotateTurrent(FVector LookAtTarget)
 {
@@ -39,8 +46,8 @@ void APawnBase::Fire()
 {
 	FVector ProjectileSpawnPointLocation = ProjectileSpawnPoint->GetComponentLocation();
 	
-	GetWorld()->SpawnActor<AProjectile>(ProjectileClass, ProjectileSpawnPointLocation, ProjectileSpawnPoint->GetComponentRotation());
-
+	auto Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass, ProjectileSpawnPointLocation, ProjectileSpawnPoint->GetComponentRotation());
+	Projectile->SetOwner(this);
 }
 
 
